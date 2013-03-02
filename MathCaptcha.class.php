@@ -29,12 +29,21 @@ class MathCaptcha extends SimpleCaptcha {
 
 	/** Pick a random sum */
 	function pickSum() {
-		$a = mt_rand( 0, 100 );
-		$b = mt_rand( 0, 10 );
-		$op = mt_rand( 0, 1 ) ? '+' : '-';
-		$sum = "{$a} {$op} {$b} = ";
-		$ans = $op == '+' ? ( $a + $b ) : ( $a - $b );
-		return array( $sum, $ans );
+    // $a = mt_rand( 0, 100 );
+    // $b = mt_rand( 0, 10 );
+    // $op = mt_rand( 0, 1 ) ? '+' : '-';
+    // $sum = "{$a} {$op} {$b} = ";
+    // $ans = $op == '+' ? ( $a + $b ) : ( $a - $b );
+    // return array( $sum, $ans );
+    $problems = [
+      ['\sum\limits_{n = -\infty}^{\infty} |\psi_n><\psi_n| = ', 1],
+      ['\e^{-i\pi} = ', -1],
+      ['\frac{1}{\alpha_{QED}} = ', 137]
+    ];
+    $i = mt_rand( 0, length($problems) );
+    $problem = $problems[$i][0];
+    $answer = $problems[$i][1];
+    return array( $problem, $answer );
 	}
 
 	/** Fetch the math */
