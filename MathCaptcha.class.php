@@ -29,18 +29,16 @@ class MathCaptcha extends SimpleCaptcha {
 
 	/** Pick a random sum */
 	function pickSum() {
-    // $a = mt_rand( 0, 100 );
-    // $b = mt_rand( 0, 10 );
-    // $op = mt_rand( 0, 1 ) ? '+' : '-';
-    // $sum = "{$a} {$op} {$b} = ";
-    // $ans = $op == '+' ? ( $a + $b ) : ( $a - $b );
-    // return array( $sum, $ans );
     $problems = [
       ['\sum\limits_{n = -\infty}^{\infty} |\psi_n><\psi_n| = ', 1],
-      ['\e^{-i\pi} = ', -1],
-      ['\frac{1}{\alpha_{QED}} = ', 137]
+      ['e^{-i\pi} = ', -1],
+      ['\frac{1}{\alpha_{QED}} = ', 137],
+      ['E_{ground} \text{ for Hydrogen (Mev)} = ', -13.6],
+      ['\oint_{S} \vec{B} d \vec{S} = ', 0],
+      ['\text{S - unitary operator, then  } SS^{+} =', 1],
+      ['\frac{e}{\pi i}\int\limits^{\infty}_{-\infty}\frac{e^{it}dt}{t-i} = ', 2]
     ];
-    $i = mt_rand( 0, length($problems) );
+    $i = mt_rand( 0, count($problems) - 1);
     $problem = $problems[$i][0];
     $answer = $problems[$i][1];
     return array( $problem, $answer );
